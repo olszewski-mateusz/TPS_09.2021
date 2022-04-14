@@ -1,0 +1,55 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(dplyr)
+library(DataExplorer)
+library(caret)
+```
+
+```{r}
+data <- read.csv("data/train.csv")
+introduce(data)
+```
+
+```{r}
+set.seed(1234)
+sample_data <- sample_frac(data, 0.2)
+colnames(sample_data)
+```
+```{r}
+sample_data$claim <- as.factor(sample_data$claim)
+print(str(sample_data, list.len=500))
+```
+
+```{r}
+plot_intro(sample_data)
+```
+
+```{r}
+plot_missing(sample_data)
+```
+
+```{r}
+plot_histogram(sample_data)
+```
+
+```{r}
+plot_density(sample_data)
+```
+
+
+```{r}
+plot_boxplot(sample_data, by="claim")
+```
+
+```{r}
+plot_bar(sample_data)
+```
+
+```{r}
+saveRDS(sample_data, file = "data/sampleTrain.csv")
+```
+
